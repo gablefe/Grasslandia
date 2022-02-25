@@ -5,4 +5,4 @@ penguins %>%
   ggplot(aes(x = bill_depth_mm)) +
   geom_histogram()
 
-#You're doing great, kid
+#Hey. You're doing great, kid
