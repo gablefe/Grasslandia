@@ -41,9 +41,16 @@ data_long_omitted %>%
     sdTemp = sd(Temperature))
 
 #separating date from time...
-data <- data_long_omitted %>% select(Date)
-as.Date(data)
 
+Hours <- format(as.POSIXct(data_long_omitted$`Date`, "%m/%d/%Y %H:%M", tz = ""), format = "%H:%M")
+Hours
+Dates <- format(as.Date(data_long_omitted$`Date`,"%m/%d/%Y"), format = "%m/%d/%Y")
+Dates
+#add dates and hours columns to end of dataset!
+data_long_omitted$Hours <- format(as.POSIXct(data_long_omitted$`Date`, "%m/%d/%Y %H:%M", tz = ""), format = "%H:%M")
+
+data_long_omitted$Dates <- format(as.Date(data_long_omitted$`Date`,"%m/%d/%Y"), format = "%m/%d/%Y")
+glimpse(data_long_omitted)
 
 #Pairwise Comparisons
 data_1 <- select(data_wide, Date, CO1, CH1) 
